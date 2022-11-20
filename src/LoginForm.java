@@ -1,4 +1,5 @@
 
+import com.sun.glass.events.KeyEvent;
 import javax.swing.JOptionPane;
 
 /*
@@ -40,6 +41,12 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setText("ID User");
 
         jLabel2.setText("Password");
+
+        userTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userTFKeyPressed(evt);
+            }
+        });
 
         loginBT.setText("Login");
         loginBT.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +108,16 @@ public class LoginForm extends javax.swing.JFrame {
             userTF.requestFocus();
         }
     }//GEN-LAST:event_loginBTActionPerformed
+
+    private void userTFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userTFKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+        JOptionPane.showMessageDialog(this, "User tidak boleh kosong\nsilahkan isi dulu","Informasi",
+                JOptionPane.INFORMATION_MESSAGE);
+        }else{
+        userTF.setText(userTF.getText());
+        }
+    }//GEN-LAST:event_userTFKeyPressed
 
     /**
      * @param args the command line arguments
